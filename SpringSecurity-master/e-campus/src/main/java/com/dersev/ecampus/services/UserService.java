@@ -47,20 +47,17 @@ public class UserService implements UserDetailsService {
     {
         return userDao.findByEmail(username);
     }
-    public UserRole saveRole(UserRole role)
-    {
+    public UserRole saveRole(UserRole role) {
         log.info("Saving role...");
         userRoleDao.save(role);
         return role;
     }
 
-    public void  addRoleToUser(String username, String roleName)
-    {
+    public void  addRoleToUser(String username, String roleName) {
         log.info("Adding {} role to user {}...", roleName,username);
         User user = getUser(username);
         UserRole role = userRoleDao.findByName(roleName);
         user.getRoles().add(role);
-
     }
 
     @Override

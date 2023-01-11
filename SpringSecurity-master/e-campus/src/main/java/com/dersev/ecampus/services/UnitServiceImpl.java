@@ -11,7 +11,6 @@ import java.util.List;
 public class UnitServiceImpl implements UnitService{
 
     private UnitDao unitDao;
-
     @Autowired
     public UnitServiceImpl(UnitDao unitDao) {
         this.unitDao = unitDao;

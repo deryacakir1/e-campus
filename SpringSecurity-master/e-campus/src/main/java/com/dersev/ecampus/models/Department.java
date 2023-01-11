@@ -16,6 +16,8 @@ public class Department {
 
     private String name;
 
+    private String description;
+
     @ManyToOne
     @JsonBackReference
     @JoinColumn(name = "unit_id")

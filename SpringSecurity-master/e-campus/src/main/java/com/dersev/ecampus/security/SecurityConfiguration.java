@@ -29,9 +29,9 @@ public class SecurityConfiguration {
         http.csrf()
                 .disable();
         http.headers().frameOptions().disable();
-        http.authorizeRequests().requestMatchers(HttpMethod.GET, "/login").permitAll();
-        http.authorizeRequests().requestMatchers(HttpMethod.POST,"/users/**").permitAll();
-        http.authorizeRequests().requestMatchers(HttpMethod.GET,"/users/**").hasAuthority("ROLE_ADMIN");
+        http.authorizeRequests().anyRequest().permitAll();
+//        http.authorizeRequests().requestMatchers(HttpMethod.POST,"/users/**").permitAll();
+//        http.authorizeRequests().requestMatchers(HttpMethod.GET,"/users/**").hasAuthority("ROLE_ADMIN");
 
 
         http.sessionManagement()

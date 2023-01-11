@@ -24,3 +24,5 @@ public class UserRoleService {
         return userRoleDao.findAll();
     }
 }
+
+

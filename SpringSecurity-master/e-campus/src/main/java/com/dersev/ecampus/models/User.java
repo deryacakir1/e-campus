@@ -28,6 +28,12 @@ public class User {
 
     private String password;
 
+    private String birthDate;
+
+    private String dateOfRegistration;
+
+    private String phoneNumber;
+
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<UserRole> roles = new ArrayList<>();
 }
