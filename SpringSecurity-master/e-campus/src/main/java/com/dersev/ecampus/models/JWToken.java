@@ -21,7 +21,6 @@ import static java.util.Arrays.stream;
 public class JWToken {
     public final String secretKey = "STP";
     public final String Issuer = "localhost";
-
     public String  generateToken(User user, int validity){
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
         String access_token = JWT.create()
@@ -31,19 +30,15 @@ public class JWToken {
                 .withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
                 .sign(algorithm);
         return access_token;
-    }
-
-    public UsernamePasswordAuthenticationToken validateToken(String token)
+    }public UsernamePasswordAuthenticationToken validateToken(String token)
     {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
         JWTVerifier verifier = JWT.require(algorithm).build();
         DecodedJWT decodedJWT = verifier.verify(token);
-
         String username = decodedJWT.getSubject();
         String[] roles = decodedJWT.getClaim("roles").asArray(String.class);
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
         stream(roles).forEach(role -> authorities.add(new SimpleGrantedAuthority(role)));
-
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(username, null, authorities);
         return authenticationToken;

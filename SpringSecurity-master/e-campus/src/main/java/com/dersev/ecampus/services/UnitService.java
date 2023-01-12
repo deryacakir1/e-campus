@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface UnitService {
     Unit save(Unit unit);
-
     void delete(int id);
     List<Unit> findAll();
 }

@@ -7,6 +7,5 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface DepartmentDao extends JpaRepository<Department,Integer> {
-    //List<Department> findAllByUnit(int id);
     List<Department> findAllByUnitId(@Param("unitId") int unitId);
 }

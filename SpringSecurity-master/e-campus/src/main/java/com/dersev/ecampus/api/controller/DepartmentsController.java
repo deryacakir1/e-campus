@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("departments")
 public class DepartmentsController {
-
     private DepartmentService departmentService;
 
     public DepartmentsController(DepartmentService departmentService) {
@@ -19,11 +18,14 @@ public class DepartmentsController {
     public ResponseEntity add(@RequestBody Department department) {
         return ResponseEntity.ok(departmentService.save(department));
     }
+    @DeleteMapping("{id}")
+    public ResponseEntity delete(@PathVariable int id) {
+        departmentService.delete(id);
+        return ResponseEntity.ok("Success!");
+    }
 
     @GetMapping("{unitId}")
     public ResponseEntity getAllByUnit(@PathVariable int unitId) {
         return ResponseEntity.ok(departmentService.getAllByUnit(unitId));
     }
-
-
 }

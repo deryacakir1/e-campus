@@ -39,15 +39,11 @@ public class UsersController {
         userService.addRoleToUser(form.getUsername(), form.getRoleName());
         return ResponseEntity.ok("Successful!");
     }
-
-
-
-
 }
 
-@Data
-class UserRoleForm
-{
-    private String username;
-    private String roleName;
-}
+   @Data
+   class UserRoleForm
+   {
+      private String username;
+      private String roleName;
+   }
